@@ -1,9 +1,14 @@
 ---
+import Shapes from '@/components/Shapes.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 ---
 
 <BaseLayout>
-  <main class="p-8">
+  <main class="relative h-screen p-8">
     <h1 class="text-4xl">Hello, world.</h1>
+    <Shapes icon="triangle" width={48} stroke color="icon-orange" left="10%" top="20%" motion="up-down" />
+    <Shapes icon="hexa" width={48} stroke color="icon-red" left="60%" top="70%" motion="up-down" />
+    <Shapes icon="circle" width={64} color="icon-green" left="80%" top="20%" motion="up-down-wide" />
+    <Shapes icon="cross" width={32} stroke color="icon-pink" left="30%" top="60%" motion="up-down-wide" />
   </main>
 </BaseLayout>
