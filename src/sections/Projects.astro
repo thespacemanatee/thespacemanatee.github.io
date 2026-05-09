@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import ParallaxLayer from '@/components/ParallaxLayer.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import Shapes from '@/components/Shapes.astro';
+
+const projects = (await getCollection('projects'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<section id="projects" class="relative overflow-hidden py-32">
+  {/* Decorative gradient slash */}
+  <div
+    class="pointer-events-none absolute inset-0"
+    style="background: linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%); clip-path: polygon(0 15%, 100% 25%, 100% 85%, 0 75%); opacity: 0.5;"
+    aria-hidden="true"
+  />
+
+  {/* Decorative shapes */}
+  <ParallaxLayer speed={0.3} class="pointer-events-none absolute inset-0">
+    <Shapes icon="box" width={6} color="icon-brightest" left="85%" top="75%" motion="up-down" />
+    <Shapes icon="up-down" width={8} color="icon-teal" left="70%" top="20%" motion="up-down" />
+    <Shapes icon="triangle" width={8} stroke color="icon-orange" left="25%" top="5%" motion="up-down" />
+    <Shapes icon="circle" width={24} color="icon-brightest" left="17%" top="60%" hiddenMobile motion="up-down" />
+    <Shapes icon="arrow" width={16} color="icon-green" left="20%" top="90%" hiddenMobile motion="up-down-wide" />
+    <Shapes icon="triangle" width={12} stroke color="icon-brightest" left="90%" top="30%" motion="up-down-wide" />
+    <Shapes icon="circle" width={16} color="icon-yellow" left="70%" top="90%" motion="up-down-wide" />
+    <Shapes icon="circle" width={12} color="icon-pink" left="80%" top="60%" />
+    <Shapes icon="box" width={6} color="icon-orange" left="10%" top="10%" />
+    <Shapes icon="box" width={12} color="icon-yellow" left="29%" top="26%" />
+    <Shapes icon="hexa" width={16} stroke color="icon-red" left="75%" top="30%" />
+    <Shapes icon="hexa" width={8} stroke color="icon-yellow" left="80%" top="70%" />
+  </ParallaxLayer>
+
+  {/* Content */}
+  <div class="relative z-10 mx-auto max-w-6xl px-6">
+    <h2 class="reveal-left mb-12 text-5xl font-bold md:text-6xl">Projects</h2>
+    <div class="grid gap-6 md:grid-cols-2 lg:gap-10">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </div>
+</section>
