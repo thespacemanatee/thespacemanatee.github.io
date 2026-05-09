@@ -15,6 +15,7 @@
   --color-heading: #1a202c;
   --color-divider: #ffe0c1;
   --color-accent: #f6ad55;
+  --color-link: #c05621;
 
   /* icon palette (from cara theme) */
   --color-icon-orange: #fbd38d;
@@ -41,6 +42,7 @@
   --color-heading: #f7fafc;
   --color-divider: #2d3748;
   --color-accent: #f6ad55;
+  --color-link: #f6ad55;
 
   --color-icon-orange: #ed8936;
   --color-icon-red: #f56565;
@@ -76,7 +78,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-  color: var(--color-accent);
+  color: var(--color-link);
 }
 
 /* ---------------------------------------------------------------------------
