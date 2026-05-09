@@ -222,3 +222,34 @@ a {
     animation: fade-in 0.001s ease-out both !important;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Parallax (CSS scroll-driven)
+   --------------------------------------------------------------------------- */
+@keyframes parallax-translate {
+  to {
+    transform: translate3d(
+      0,
+      calc(var(--parallax-distance, 80px) * var(--parallax-direction, 1)),
+      0
+    );
+  }
+}
+
+.parallax-layer {
+  will-change: transform;
+}
+
+@supports (animation-timeline: scroll(root)) {
+  .parallax-layer {
+    animation: parallax-translate linear forwards;
+    animation-timeline: scroll(root);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax-layer {
+    animation: none !important;
+    transform: none !important;
+  }
+}

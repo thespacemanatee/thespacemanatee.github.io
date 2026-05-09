@@ -1,0 +1,23 @@
+---
+interface Props {
+  /** Direction & magnitude. Positive moves down as page scrolls down (slow). Negative moves up (fast). Range typically -1 to 1. */
+  speed?: number;
+  /** Maximum translation distance in px at full scroll. */
+  distance?: number;
+  class?: string;
+}
+
+const { speed = 0.4, distance = 200, class: className = '' } = Astro.props;
+const direction = speed >= 0 ? 1 : -1;
+const magnitude = Math.abs(speed) * distance;
+---
+
+<div
+  class:list={['parallax-layer', className]}
+  style={{
+    '--parallax-direction': direction,
+    '--parallax-distance': `${magnitude}px`,
+  }}
+>
+  <slot />
+</div>
