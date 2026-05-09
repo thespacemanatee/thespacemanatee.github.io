@@ -1,0 +1,26 @@
+---
+import ParallaxLayer from '@/components/ParallaxLayer.astro';
+import Shapes from '@/components/Shapes.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404 — Page not found" description="The page you were looking for couldn't be found.">
+  <main class="relative flex min-h-screen items-center justify-center overflow-hidden px-6">
+    <ParallaxLayer speed={0.2} class="pointer-events-none absolute inset-0">
+      <Shapes icon="triangle" width={48} stroke color="icon-orange" left="10%" top="20%" hiddenMobile motion="up-down" />
+      <Shapes icon="hexa" width={48} stroke color="icon-red" left="60%" top="70%" motion="up-down" />
+      <Shapes icon="circle" width={64} color="icon-green" left="95%" top="5%" />
+      <Shapes icon="box" width={64} color="icon-purple" left="5%" top="90%" hiddenMobile />
+      <Shapes icon="cross" width={16} stroke color="icon-pink" left="28%" top="15%" motion="up-down-wide" />
+      <Shapes icon="arrow" width={16} color="icon-blue" left="80%" top="10%" hiddenMobile motion="up-down-wide" />
+    </ParallaxLayer>
+
+    <div class="relative z-10 text-center">
+      <h1 class="text-7xl font-bold md:text-9xl">404</h1>
+      <p class="mt-6 text-xl text-(--color-text-muted) md:text-2xl">
+        Page not found. Go back to the{' '}
+        <a href="/" class="font-semibold text-(--color-accent) underline-offset-4 hover:underline">homepage</a>.
+      </p>
+    </div>
+  </main>
+</BaseLayout>

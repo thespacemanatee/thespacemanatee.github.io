@@ -1,18 +1,14 @@
 ---
-import { getCollection } from 'astro:content';
-import ProjectCard from '@/components/ProjectCard.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-
-const projects = (await getCollection('projects'))
-  .filter((p) => !p.data.draft)
-  .sort((a, b) => a.data.order - b.data.order);
+import About from '@/sections/About.astro';
+import Contact from '@/sections/Contact.astro';
+import Hero from '@/sections/Hero.astro';
+import Projects from '@/sections/Projects.astro';
 ---
 
 <BaseLayout>
-  <main class="mx-auto max-w-4xl p-8">
-    <h1 class="text-4xl">Projects</h1>
-    <div class="mt-8 grid gap-6 md:grid-cols-2">
-      {projects.map((project) => <ProjectCard project={project} />)}
-    </div>
-  </main>
+  <Hero />
+  <Projects />
+  <About />
+  <Contact />
 </BaseLayout>
