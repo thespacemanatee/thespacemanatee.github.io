@@ -1,11 +1,11 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
    Design tokens (light)
    --------------------------------------------------------------------------- */
 @theme {
-  --font-body: var(--font-body), 'Inter', system-ui, sans-serif;
-  --font-display: var(--font-display), 'Outfit', system-ui, sans-serif;
+  --font-body: var(--font-body), "Inter", system-ui, sans-serif;
+  --font-display: var(--font-display), "Outfit", system-ui, sans-serif;
 
   /* semantic */
   --color-bg: #fbf7f3;
@@ -34,7 +34,7 @@
 /* ---------------------------------------------------------------------------
    Dark theme overrides
    --------------------------------------------------------------------------- */
-[data-theme='dark'] {
+[data-theme="dark"] {
   --color-bg: #141821;
   --color-bg-elevated: #1f2430;
   --color-text: #e2e8f0;
@@ -65,14 +65,20 @@
   scroll-behavior: smooth;
 }
 
-html, body {
+html,
+body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
   color: var(--color-heading);
 }
@@ -85,49 +91,100 @@ a {
    Keyframes (replaces theme/cara animations + react-awesome-reveal)
    --------------------------------------------------------------------------- */
 @keyframes up-down {
-  0%, 100% { transform: translate3d(0, 20px, 0); }
-  50%      { transform: translate3d(0, -20px, 0); }
+  0%,
+  100% {
+    transform: translate3d(0, 20px, 0);
+  }
+  50% {
+    transform: translate3d(0, -20px, 0);
+  }
 }
 
 @keyframes up-down-wide {
-  0%, 100% { transform: translate3d(0, 50px, 0); }
-  50%      { transform: translate3d(0, -50px, 0); }
+  0%,
+  100% {
+    transform: translate3d(0, 50px, 0);
+  }
+  50% {
+    transform: translate3d(0, -50px, 0);
+  }
 }
 
 @keyframes bounce-25 {
-  0%, 100% { transform: translateY(0); animation-timing-function: cubic-bezier(0.1, 0, 1, 1); }
-  50%      { transform: translateY(-25%); animation-timing-function: cubic-bezier(0, 0, 0.1, 1); }
+  0%,
+  100% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.1, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0, 0, 0.1, 1);
+  }
 }
 
 @keyframes fade-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slide-in-up {
-  from { opacity: 0; transform: translate3d(0, 30px, 0); }
-  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+  from {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 @keyframes slide-in-left {
-  from { opacity: 0; transform: translate3d(-40px, 0, 0); }
-  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+  from {
+    opacity: 0;
+    transform: translate3d(-40px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 @keyframes slide-in-down {
-  from { opacity: 0; transform: translate3d(0, -30px, 0); }
-  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+  from {
+    opacity: 0;
+    transform: translate3d(0, -30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 /* Loop float for shapes */
-.float-up-down      { animation: up-down 4s ease-in-out infinite; }
-.float-up-down-wide { animation: up-down-wide 18s ease-in-out infinite; }
+.float-up-down {
+  animation: up-down 4s ease-in-out infinite;
+}
+.float-up-down-wide {
+  animation: up-down-wide 18s ease-in-out infinite;
+}
 
 /* Reveals: tied to view timeline. Falls back to plain animation on first paint. */
-.reveal-fade  { animation: fade-in 0.8s ease-out both; }
-.reveal-up    { animation: slide-in-up 0.8s ease-out both; }
-.reveal-left  { animation: slide-in-left 0.8s ease-out both; }
-.reveal-down  { animation: slide-in-down 0.8s ease-out both; }
+.reveal-fade {
+  animation: fade-in 0.8s ease-out both;
+}
+.reveal-up {
+  animation: slide-in-up 0.8s ease-out both;
+}
+.reveal-left {
+  animation: slide-in-left 0.8s ease-out both;
+}
+.reveal-down {
+  animation: slide-in-down 0.8s ease-out both;
+}
 
 @supports (animation-timeline: view()) {
   .reveal-fade,
