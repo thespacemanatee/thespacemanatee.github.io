@@ -1,22 +1,18 @@
 ---
-import ParallaxLayer from '@/components/ParallaxLayer.astro';
-import Shapes from '@/components/Shapes.astro';
+import { getCollection } from 'astro:content';
+import ProjectCard from '@/components/ProjectCard.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const projects = (await getCollection('projects'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout>
-  <main class="relative">
-    <section class="relative h-[150vh] p-8">
-      <h1 class="text-4xl">Section 1</h1>
-      <ParallaxLayer speed={-0.3}>
-        <Shapes icon="circle" width={64} color="icon-green" left="80%" top="20%" motion="up-down-wide" />
-      </ParallaxLayer>
-      <ParallaxLayer speed={0.5}>
-        <Shapes icon="triangle" width={48} stroke color="icon-orange" left="10%" top="20%" motion="up-down" />
-      </ParallaxLayer>
-    </section>
-    <section class="h-[150vh] p-8">
-      <h1 class="text-4xl">Section 2</h1>
-    </section>
+  <main class="mx-auto max-w-4xl p-8">
+    <h1 class="text-4xl">Projects</h1>
+    <div class="mt-8 grid gap-6 md:grid-cols-2">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
   </main>
 </BaseLayout>

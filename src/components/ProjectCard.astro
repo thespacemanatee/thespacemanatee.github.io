@@ -1,0 +1,54 @@
+---
+import { Picture } from 'astro:assets';
+import { type CollectionEntry, render } from 'astro:content';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { title, subtitle, link, image, videoUrl, gradient } = project.data;
+const { Content } = await render(project);
+---
+
+<a
+  href={link}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="reveal-up group relative block overflow-hidden rounded-xl text-white shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl"
+  style={`background: linear-gradient(${gradient});`}
+>
+  <div class="relative" style="mask-image: linear-gradient(to bottom, black 50%, transparent 100%);">
+    {image && (
+      <Picture
+        src={image}
+        alt={title}
+        widths={[400, 800, 1200]}
+        sizes="(min-width: 1024px) 600px, 100vw"
+        formats={['avif', 'webp']}
+        class="aspect-[16/10] w-full object-cover"
+        loading="lazy"
+      />
+    )}
+    {videoUrl && (
+      <video
+        src={videoUrl}
+        autoplay
+        muted
+        loop
+        playsinline
+        class="aspect-[16/10] w-full object-cover"
+      />
+    )}
+  </div>
+
+  <div class="px-6 pb-8">
+    <div class="pb-2 text-3xl font-semibold uppercase tracking-wide leading-none md:text-4xl">
+      {title}
+    </div>
+    <div class="pb-4 text-base tracking-wide leading-none md:text-lg">{subtitle}</div>
+    <div class="font-medium [text-shadow:0_2px_10px_rgba(0,0,0,0.3)]">
+      <Content />
+    </div>
+  </div>
+</a>
