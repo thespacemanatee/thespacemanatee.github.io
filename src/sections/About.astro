@@ -1,0 +1,42 @@
+---
+import ParallaxLayer from '@/components/ParallaxLayer.astro';
+import Shapes from '@/components/Shapes.astro';
+---
+
+<section id="about" class="relative overflow-hidden py-32">
+  <div
+    class="pointer-events-none absolute inset-0 bg-(--color-divider)"
+    style="clip-path: polygon(0 16%, 100% 4%, 100% 82%, 0 94%);"
+    aria-hidden="true"
+  />
+
+  <ParallaxLayer speed={-0.2} class="pointer-events-none absolute inset-0">
+    <Shapes icon="box" width={6} color="icon-blue" left="50%" top="75%" hiddenMobile motion="up-down" />
+    <Shapes icon="up-down" width={8} color="icon-darkest" left="70%" top="20%" hiddenMobile motion="up-down" />
+    <Shapes icon="triangle" width={8} stroke color="icon-darkest" left="25%" top="5%" motion="up-down" />
+    <Shapes icon="up-down" width={24} color="icon-orange" left="80%" top="80%" hiddenMobile motion="up-down" />
+    <Shapes icon="arrow" width={16} color="icon-purple" left="5%" top="80%" hiddenMobile motion="up-down-wide" />
+    <Shapes icon="triangle" width={12} stroke color="icon-brightest" left="95%" top="50%" motion="up-down-wide" />
+    <Shapes icon="circle" width={6} color="icon-brightest" left="85%" top="15%" hiddenMobile motion="up-down-wide" />
+    <Shapes icon="up-down" width={8} color="icon-darkest" left="45%" top="10%" hiddenMobile motion="up-down-wide" />
+    <Shapes icon="circle" width={6} color="icon-brightest" left="4%" top="20%" hiddenMobile />
+    <Shapes icon="circle" width={12} color="icon-darkest" left="70%" top="60%" />
+    <Shapes icon="box" width={6} color="icon-orange" left="10%" top="10%" />
+    <Shapes icon="box" width={12} color="icon-darkest" left="20%" top="30%" />
+    <Shapes icon="hexa" width={8} stroke color="icon-darkest" left="80%" top="70%" />
+  </ParallaxLayer>
+
+  <div class="relative z-10 mx-auto max-w-3xl px-6">
+    <h2 class="reveal-left mb-8 text-5xl font-bold md:text-6xl">About</h2>
+    {/* TODO: refresh About copy — references "Final Year SUTD student" from 2022 */}
+    <blockquote class="reveal-up mb-6 border-l-4 border-(--color-accent) pl-6 text-xl italic text-(--color-text-muted) md:text-2xl">
+      I am currently a Final Year Computer Science student from SUTD, specialising in
+      Software Engineering and Cloud Computing.
+    </blockquote>
+    <p class="reveal-up text-lg leading-relaxed md:text-xl">
+      My specific interests include mobile application development, but I have done alot
+      of full-stack work as well. I am passionate about programming and acquired many of
+      my programming skills in my own free time.
+    </p>
+  </div>
+</section>
