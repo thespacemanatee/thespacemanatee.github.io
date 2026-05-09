@@ -1,0 +1,76 @@
+---
+type IconName = 'triangle' | 'hexa' | 'box' | 'circle' | 'cross' | 'arrow' | 'up-down';
+type MotionName = 'up-down' | 'up-down-wide' | 'none';
+
+interface Props {
+  icon: IconName;
+  width: number;
+  color: string;        // semantic CSS var name without the `--`, e.g. 'icon-orange'
+  left: string;         // e.g. '10%'
+  top: string;          // e.g. '20%'
+  stroke?: boolean;
+  hiddenMobile?: boolean;
+  motion?: MotionName;
+}
+
+const {
+  icon,
+  width,
+  color,
+  left,
+  top,
+  stroke = false,
+  hiddenMobile = false,
+  motion = 'none',
+} = Astro.props;
+
+const colorVar = `var(--color-${color})`;
+
+const motionClass =
+  motion === 'up-down' ? 'float-up-down' :
+  motion === 'up-down-wide' ? 'float-up-down-wide' :
+  '';
+
+const visibilityClass = hiddenMobile ? 'hidden md:block' : 'block';
+
+const styles = {
+  position: 'absolute',
+  left,
+  top,
+  width: `${width}px`,
+  height: `${width}px`,
+  fill: stroke ? 'transparent' : colorVar,
+  stroke: stroke ? colorVar : 'none',
+  strokeWidth: stroke ? 2 : 0,
+};
+---
+
+<svg
+  class:list={[motionClass, visibilityClass]}
+  style={styles}
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 44 44"
+  aria-hidden="true"
+>
+  {icon === 'triangle' && (
+    <polygon points="22 2 42 42 2 42" stroke-linejoin="round" />
+  )}
+  {icon === 'hexa' && (
+    <polygon points="22 2 41 13 41 35 22 46 3 35 3 13" stroke-linejoin="round" />
+  )}
+  {icon === 'box' && (
+    <rect x="4" y="4" width="36" height="36" stroke-linejoin="round" />
+  )}
+  {icon === 'circle' && (
+    <circle cx="22" cy="22" r="20" />
+  )}
+  {icon === 'cross' && (
+    <path d="M6 6 L38 38 M38 6 L6 38" stroke-linecap="round" />
+  )}
+  {icon === 'arrow' && (
+    <path d="M22 6 L22 38 M10 18 L22 6 L34 18" stroke-linejoin="round" stroke-linecap="round" fill="none" stroke={colorVar} stroke-width="3" />
+  )}
+  {icon === 'up-down' && (
+    <path d="M22 4 L22 40 M14 12 L22 4 L30 12 M14 32 L22 40 L30 32" stroke-linejoin="round" stroke-linecap="round" fill="none" stroke={colorVar} stroke-width="3" />
+  )}
+</svg>
