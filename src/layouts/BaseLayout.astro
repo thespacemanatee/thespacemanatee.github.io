@@ -2,6 +2,7 @@
 import '@/styles/global.css';
 import { Font } from 'astro:assets';
 import SEO from '@/components/SEO.astro';
+import ThemeToggle from '@/components/ThemeToggle';
 
 interface Props {
   title?: string;
@@ -33,6 +34,9 @@ const { title, description } = Astro.props;
     </script>
   </head>
   <body>
+    <div class="fixed top-4 right-4 z-50">
+      <ThemeToggle client:load />
+    </div>
     <slot />
   </body>
 </html>
