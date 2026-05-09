@@ -1,0 +1,38 @@
+---
+import ParallaxLayer from '@/components/ParallaxLayer.astro';
+import Shapes from '@/components/Shapes.astro';
+import WaveDivider from '@/components/WaveDivider.astro';
+import { SITE } from '@/site.config';
+---
+
+<section id="contact" class="relative overflow-hidden py-32">
+  <WaveDivider />
+
+  <ParallaxLayer speed={-0.2} class="pointer-events-none absolute inset-0">
+    <Shapes icon="up-down" width={8} color="icon-darkest" left="70%" top="20%" hiddenMobile motion="up-down" />
+    <Shapes icon="triangle" width={8} stroke color="icon-darkest" left="25%" top="5%" motion="up-down" />
+    <Shapes icon="triangle" width={12} stroke color="icon-brightest" left="95%" top="50%" motion="up-down-wide" />
+    <Shapes icon="circle" width={6} color="icon-brightest" left="85%" top="15%" motion="up-down-wide" />
+    <Shapes icon="up-down" width={8} color="icon-darkest" left="45%" top="10%" hiddenMobile motion="up-down-wide" />
+    <Shapes icon="circle" width={6} color="icon-brightest" left="4%" top="20%" />
+    <Shapes icon="circle" width={12} color="icon-darkest" left="70%" top="60%" />
+    <Shapes icon="box" width={12} color="icon-darkest" left="20%" top="30%" />
+    <Shapes icon="hexa" width={8} stroke color="icon-darkest" left="80%" top="70%" />
+  </ParallaxLayer>
+
+  <div class="relative z-10 mx-auto max-w-3xl px-6">
+    <h2 class="reveal-left mb-8 text-5xl font-bold md:text-6xl">Get in touch</h2>
+    {/* TODO: confirm contact details still current */}
+    <p class="reveal-up text-xl leading-relaxed md:text-2xl">
+      Say <a class="font-semibold underline-offset-4 hover:underline" href={`mailto:${SITE.social.email}`}>Hi</a>
+      {' '}or find me on other platforms:{' '}
+      <a class="font-semibold underline-offset-4 hover:underline" href={SITE.social.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+      {' '}&{' '}
+      <a class="font-semibold underline-offset-4 hover:underline" href={SITE.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>.
+    </p>
+
+    <p class="mt-24 text-center text-sm text-(--color-text-muted)">
+      Copyright &copy; {new Date().getFullYear()}. All rights reserved.
+    </p>
+  </div>
+</section>
